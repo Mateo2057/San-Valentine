@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Fernanda ❤️</title>
+    <style>
+        :root { --rojo: #d32f2f; --rosa-suave: #ffebee; --blanco: rgba(255, 255, 255, 0.95); }
+        body { margin: 0; height: 100vh; display: flex; justify-content: center; align-items: center; background-color: var(--rosa-suave); font-family: 'Segoe UI', Tahoma, sans-serif; overflow: hidden; }
+        
+        /* Estilo de la Tarjeta (Fiel a tu imagen) */
+        .card { background: var(--blanco); padding: 50px; border-radius: 40px; box-shadow: 0 20px 60px rgba(255, 77, 109, 0.2); text-align: center; width: 85%; max-width: 500px; z-index: 10; border: 2px solid white; position: relative; transition: all 0.4s ease; }
+        
+        h1 { color: var(--rojo); font-size: 2.6rem; margin: 0; }
+        #status-msg { color: #8a3a3a; font-weight: bold; margin: 15px 0 30px; font-size: 1.2rem; }
+
+        /* Contenedor de Botones - ALINEACIÓN PERFECTA */
+        .btn-container { display: flex; justify-content: center; align-items: center; gap: 30px; min-height: 120px; position: relative; }
+        
+        button { padding: 18px 45px; font-size: 1.4rem; border: none; border-radius: 50px; cursor: pointer; font-weight: bold; transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        
+        #yesBtn { background: linear-gradient(45deg, #ff4d6d, #d32f2f); color: white; z-index: 1000; box-shadow: 0 10px 25px rgba(211, 47, 47, 0.3); }
+        #noBtn { background: #eeeeee; color: #888; position: relative; z-index: 5; transition: 0.1s; }
+
+        /* Pantalla Final */
+        #finalMessage { display: none; text-align: left; animation: slideUp 0.8s ease forwards; }
+        .letter { font-size: 1.15rem; line-height: 1.6; color: #222; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+        .emoji { position: fixed; pointer-events: none; z-index: 2000; animation: volar 2.5s linear forwards; }
+        @keyframes volar { to { transform: translateY(-110vh) rotate(360deg) scale(2); opacity: 0; } }
+    </style>
+</head>
+<body>
+
+    <audio id="musica" loop><source src="song.mp3" type="audio/mpeg"></audio>
+
+    <div class="card" id="mainCard">
+        <div id="quiz">
+            <h1>¡Hola, Fernanda! 🌹</h1>
+            <p id="status-msg">¿Quieres ser mi San Valentín?</p>
+            <div class="btn-container" id="btnGroup">
+                <button id="yesBtn">Sí</button>
+                <button id="noBtn">No</button>
+            </div>
+        </div>
+
+        <div id="finalMessage">
+            <h2 style="color: var(--rojo); text-align: center; margin-top: 0;">Lo supe desde agosto ❤️</h2>
+            <div class="letter">
+                <p>Tal vez no podamos vernos este 14 de febrero, pero eso no cambia lo que siento. Eres <b>la persona más auténtica</b> que he conocido y me encanta cómo eres conmigo cuando te sientas atrás de mí en el salón.</p>
+                <p>Empezamos de nuevo este 30 de diciembre y, aunque solo tengamos 13 años, mi intención es real: <b>te quiero en mi futuro</b>. Me veo contigo siendo mi esposa y la compañera de todo lo que venga.</p>
+                <p style="text-align: right; font-weight: bold; font-size: 1.4rem; color: var(--rojo);">— Mateo</p>
+            </div>
+        </div>
+    </div>
+
+<script>
+    const noBtn = document.getElementById('noBtn');
+    const yesBtn = document.getElementById('yesBtn');
+    const musica = document.getElementById('musica');
+    const statusMsg = document.getElementById('status-msg');
+    
+    let scaleYes = 1;
+    let intentos = 0;
+    const frases = ["¿Segura? 🤔", "Piénsalo bien...", "¡No puedes huir! 😂", "¡Ya casi!", "Ríndete 🔥"];
+
+    function moverNo() {
+        musica.play().catch(() => {});
+        intentos++;
+        
+        // El botón No se vuelve 'fixed' solo después del primer intento de tocarlo
+        noBtn.style.position = 'fixed';
+
+        // Lógica de bordes: El botón No NO puede tocar el centro
+        const margin = 80;
+        let newX, newY;
+        const screenW = window.innerWidth;
+        const screenH = window.innerHeight;
+
+        // Decidir en qué borde aparecer (0: Arriba, 1: Abajo, 2: Izquierda, 3: Derecha)
+        const lado = Math.floor(Math.random() * 4);
+        if(lado === 0) { newX = Math.random() * screenW; newY = margin; }
+        else if(lado === 1) { newX = Math.random() * screenW; newY = screenH - margin; }
+        else if(lado === 2) { newX = margin; newY = Math.random() * screenH; }
+        else { newX = screenW - margin; newY = Math.random() * screenH; }
+
+        noBtn.style.left = `${Math.max(20, Math.min(newX, screenW - 120))}px`;
+        noBtn.style.top = `${Math.max(20, Math.min(newY, screenH - 60))}px`;
+
+        // El Sí crece para dominar la pantalla
+        scaleYes += 0.35;
+        yesBtn.style.transform = `scale(${scaleYes})`;
+        
+        // Cambiar mensaje
+        statusMsg.innerText = frases[Math.min(intentos - 1, frases.length - 1)];
+
+        // Si el Sí es gigante, empieza a soltar fuego de advertencia
+        if(scaleYes > 6) soltarEmoji('🔥');
+    }
+
+    noBtn.addEventListener('mouseover', moverNo);
+    noBtn.onclick = moverNo;
+
+    yesBtn.onclick = () => {
+        musica.play().catch(() => {});
+        document.getElementById('quiz').style.display = 'none';
+        document.getElementById('finalMessage').style.display = 'block';
+        document.getElementById('mainCard').style.transform = "scale(1)";
+        document.body.style.backgroundColor = "#ffcdd2";
+        
+        // Explosión final de amor y fuego
+        setInterval(() => soltarEmoji('❤️'), 100);
+        setInterval(() => soltarEmoji('🔥'), 250);
+    };
+
+    function soltarEmoji(tipo) {
+        const e = document.createElement('div');
+        e.className = 'emoji';
+        e.innerHTML = tipo;
+        e.style.left = Math.random() * 100 + 'vw';
+        e.style.top = '105vh';
+        e.style.fontSize = (Math.random() * 35 + 20) + 'px';
+        document.body.appendChild(e);
+        setTimeout(() => e.remove(), 2500);
+    }
+</script>
+</body>
+</html>
