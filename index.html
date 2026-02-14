@@ -37,7 +37,7 @@
 
     <div class="card" id="mainCard">
         <div id="quiz">
-            <h1>¡Hola, Fernanda mi ferrocarril! 🌹</h1>
+            <h1>¡Hola, Fernanda mi novia hermosa! 🌹</h1>
             <p id="status-msg">¿Quieres ser mi San Valentín?</p>
             <div class="btn-container" id="btnGroup">
                 <button id="yesBtn">Sí</button>
@@ -48,8 +48,8 @@
         <div id="finalMessage">
             <h2 style="color: var(--rojo); text-align: center; margin-top: 0;">Gracias por decir que si ❤️</h2>
             <div class="letter">
-                <p>Deseguro veas esto tarde pero aun así quise hacerte este detalle especialmente para ti<b>Talvez en la vida real no soy muy romantico</b>pero queria decirte que eres la persona mas hermosa que eh visto</p>
-                <p>aunque todavía no seamos tan grandes <b>te quiero en mi futuro</b>. Me veo contigo siendo mi esposa y la compañera de todo lo que venga.</p>
+                <p>Deseguro veas esto tarde pero aun así quise hacerte este detalle especialmente para ti mi  vida💛</b> Talvez en la vida real no soy muy romantico🫠 </b>pero queria decirte que eres la persona mas hermosa que mis ojos han visto nunca jamas💘</p>
+                <p>aunque todavía no seamos muy grandes <b>De verdad quisiera tenerte en mi futuro💞</b>. Me veo contigo siendo mi esposa y la compañera de toda mi vida💗.</p>
                 <p style="text-align: right; font-weight: bold; font-size: 1.4rem; color: var(--rojo);">— Mateo</p>
             </div>
         </div>
@@ -63,7 +63,7 @@
     
     let scaleYes = 1;
     let intentos = 0;
-    const frases = ["¿Segura eey😾", "Piénsalo bien mi vida😡...", "¡No puedes darle jaja!🤣", "¡Ya casi!", "Ríndete no puedes🔥"];
+    const frases = ["¿Segura que presionaste el boton correcto😤", "Piénsalo bien o crecera mas😡...", "¡No puedes darle jaja!🫵🤣", "¡Jaja pensaste que te dejaria decir no?😂!", "Ríndete no puedes🔥"];
 
     function moverNo() {
         musica.play().catch(() => {});
@@ -96,7 +96,7 @@
         statusMsg.innerText = frases[Math.min(intentos - 1, frases.length - 1)];
 
         // Si el Sí es gigante, empieza a soltar fuego de advertencia
-        if(scaleYes > 6) soltarEmoji('🔥');
+        if(scaleYes > 6) soltarEmoji('💥');
     }
 
     noBtn.addEventListener('mouseover', moverNo);
@@ -110,8 +110,8 @@
         document.body.style.backgroundColor = "#ffcdd2";
         
         // Explosión final de amor y fuego
-        setInterval(() => soltarEmoji('❤️'), 100);
-        setInterval(() => soltarEmoji('🔥'), 250);
+        setInterval(() => soltarEmoji('❤️‍🔥'), 100);
+        setInterval(() => soltarEmoji('💋'), 250);
     };
 
     function soltarEmoji(tipo) {
