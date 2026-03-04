@@ -3,51 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fragmentos de lo que queda... 🥀</title>
+    <title>Protocolo de Cierre 🚫</title>
     <style>
-        :root { --gris-profundo: #1a1a1a; --texto-sad: #4a4a4a; --fondo: #e0e0e0; --blanco: rgba(255, 255, 255, 0.98); }
+        :root { --negro-puro: #0a0a0a; --gris-oscuro: #2d2d2d; --fondo: #121212; --blanco-frio: #e0e0e0; }
         body { margin: 0; height: 100vh; display: flex; justify-content: center; align-items: center; background-color: var(--fondo); font-family: 'Segoe UI', Tahoma, sans-serif; overflow: hidden; }
         
-        .card { background: var(--blanco); padding: 50px; border-radius: 40px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15); text-align: center; width: 85%; max-width: 500px; z-index: 10; border: 1px solid rgba(0,0,0,0.05); position: relative; transition: all 0.4s ease; }
+        .card { background: var(--negro-puro); padding: 50px; border-radius: 40px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8); text-align: center; width: 85%; max-width: 500px; z-index: 10; border: 1px solid var(--gris-oscuro); position: relative; transition: all 0.4s ease; }
         
-        h1 { color: var(--gris-profundo); font-size: 2.1rem; margin: 0; letter-spacing: -1px; }
-        #status-msg { color: var(--texto-sad); font-weight: 400; margin: 15px 0 30px; font-size: 1rem; font-style: italic; }
+        h1 { color: white; font-size: 2rem; margin: 0; letter-spacing: 2px; text-transform: uppercase; }
+        #status-msg { color: #666; font-weight: 300; margin: 20px 0 35px; font-size: 1rem; }
 
         .btn-container { display: flex; justify-content: center; align-items: center; gap: 30px; min-height: 120px; position: relative; }
         
-        button { padding: 18px 45px; font-size: 1.2rem; border: none; border-radius: 50px; cursor: pointer; font-weight: bold; transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        button { padding: 18px 45px; font-size: 1.1rem; border: 1px solid #444; border-radius: 5px; cursor: pointer; font-weight: bold; transition: all 0.3s; }
         
-        #yesBtn { background: #333; color: white; z-index: 1000; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); }
-        #noBtn { background: #d1d1d1; color: #777; position: relative; z-index: 5; transition: 0.1s; }
+        #yesBtn { background: white; color: black; z-index: 1000; }
+        #noBtn { background: transparent; color: #444; position: relative; z-index: 5; }
 
-        #finalMessage { display: none; text-align: left; animation: slideUp 0.8s ease forwards; }
-        .letter { font-size: 1.05rem; line-height: 1.7; color: #444; }
-        @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        #finalMessage { display: none; text-align: left; animation: fadeIn 1s ease forwards; }
+        .letter { font-size: 1.05rem; line-height: 1.8; color: #bbb; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        .emoji { position: fixed; pointer-events: none; z-index: 2000; animation: volar 3s linear forwards; }
-        @keyframes volar { to { transform: translateY(-110vh) rotate(180deg) scale(0.8); opacity: 0; } }
+        .emoji { position: fixed; pointer-events: none; z-index: 2000; animation: caer 4s linear forwards; }
+        @keyframes caer { to { transform: translateY(110vh) rotate(360deg); opacity: 0; } }
     </style>
 </head>
 <body>
 
-    <audio id="musica" loop><source src="otro_amor.mp3" type="audio/mpeg"></audio>
+    <audio id="musica" loop><source src="stronger.mp3" type="audio/mpeg"></audio>
 
     <div class="card" id="mainCard">
         <div id="quiz">
-            <h1>A veces el silencio dice más...</h1>
-            <p id="status-msg">¿Aún queda algo de lo que fuimos?</p>
+            <h1>Fin de la transmisión</h1>
+            <p id="status-msg">¿Valió la pena la última mentira?</p>
             <div class="btn-container" id="btnGroup">
-                <button id="yesBtn">Tal vez</button>
-                <button id="noBtn">No</button>
+                <button id="yesBtn">No</button>
+                <button id="noBtn">Sí</button>
             </div>
         </div>
 
         <div id="finalMessage">
-            <h2 style="color: #222; text-align: center; margin-top: 0; font-size: 1.5rem;">Gracias por no irte del todo...</h2>
+            <h2 style="color: white; text-align: center; margin-top: 0; font-size: 1.3rem;">CONEXIÓN TERMINADA</h2>
             <div class="letter">
-                <p>Es raro cómo las cosas cambian. De los abrazos que sobraban a las palabras que hoy faltan. Ya acepté que mi papel es estar en la orilla, esperando una señal que quizás nunca llegue.</p>
-                <p>Dicen que perderte es mi castigo, pero yo siento que <b>amarte en silencio</b> es mi última victoria. Me conformo con las sobras de tu tiempo, porque incluso tus migajas alimentan mi memoria.</p>
-                <p style="text-align: right; font-weight: bold; font-size: 1rem; color: #555; margin-top: 20px;">— Un soldado que no supo rendirse.</p>
+                <p>Se acabó el tiempo de las dudas. La venda cayó y lo que vi no fue lo que amaba, sino una desconocida que aprendió a mentir por conveniencia.</p>
+                <p>Me pediste ir lento mientras ya corrías en otra dirección. Me negaste la verdad para no perder el privilegio de mi atención. Pero hoy, 3 de marzo, las migajas se terminaron.</p>
+                <p>No hay odio, porque el odio requiere sentir algo. Solo hay un silencio que por fin es dueño de sí mismo. Gracias por enseñarme que mi lealtad es demasiado cara para alguien que se vende por tan poco.</p>
+                <p style="text-align: right; font-weight: bold; font-size: 0.9rem; color: #888; margin-top: 20px;">— Desconectado.</p>
             </div>
         </div>
     </div>
@@ -61,11 +62,11 @@
     let scaleYes = 1;
     let intentos = 0;
     const frases = [
-        "¿Duele decir que no? A mí más...", 
-        "Incluso el 'no' es una forma de atención.", 
-        "Todavía no es tiempo de rendirse.", 
-        "El destino no te deja marcar esa opción.", 
-        "Quédate un poco más, aunque sea aquí..."
+        "La verdad ya salió a la luz.", 
+        "El tiempo de los juegos terminó.", 
+        "No busques respuestas donde no las hay.", 
+        "El acceso ha sido denegado.", 
+        "Ya no queda nada por salvar."
     ]; 
 
     function moverNo() {
@@ -86,11 +87,11 @@
         noBtn.style.left = `${Math.max(20, Math.min(newX, screenW - 120))}px`;
         noBtn.style.top = `${Math.max(20, Math.min(newY, screenH - 60))}px`;
 
-        scaleYes += 0.25;
+        scaleYes += 0.15;
         yesBtn.style.transform = `scale(${scaleYes})`;
         statusMsg.innerText = frases[Math.min(intentos - 1, frases.length - 1)];
 
-        if(scaleYes > 4) soltarEmoji('🥀');
+        if(scaleYes > 3) soltarEmoji('🚫');
     }
 
     noBtn.addEventListener('mouseover', moverNo);
@@ -101,10 +102,10 @@
         document.getElementById('quiz').style.display = 'none';
         document.getElementById('finalMessage').style.display = 'block';
         document.getElementById('mainCard').style.transform = "scale(1)";
-        document.body.style.backgroundColor = "#d6d6d6";
+        document.body.style.backgroundColor = "#050505";
         
-        setInterval(() => soltarEmoji('🍂'), 200);
-        setInterval(() => soltarEmoji('🌑'), 400);
+        setInterval(() => soltarEmoji('🧊'), 300);
+        setInterval(() => soltarEmoji('✖️'), 600);
     };
 
     function soltarEmoji(tipo) {
@@ -112,10 +113,10 @@
         e.className = 'emoji';
         e.innerHTML = tipo;
         e.style.left = Math.random() * 100 + 'vw';
-        e.style.top = '105vh';
-        e.style.fontSize = (Math.random() * 25 + 15) + 'px';
+        e.style.top = '-10vh';
+        e.style.fontSize = (Math.random() * 20 + 15) + 'px';
         document.body.appendChild(e);
-        setTimeout(() => e.remove(), 3000);
+        setTimeout(() => e.remove(), 4000);
     }
 </script>
 </body>
