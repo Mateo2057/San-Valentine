@@ -1,123 +1,77 @@
-<!DOCTYPE html>
-<html lang="es">
+<!DOCTYPE html><html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Protocolo de Cierre 🚫</title>
-    <style>
-        :root { --negro-puro: #0a0a0a; --gris-oscuro: #2d2d2d; --fondo: #121212; --blanco-frio: #e0e0e0; }
-        body { margin: 0; height: 100vh; display: flex; justify-content: center; align-items: center; background-color: var(--fondo); font-family: 'Segoe UI', Tahoma, sans-serif; overflow: hidden; }
-        
-        .card { background: var(--negro-puro); padding: 50px; border-radius: 40px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8); text-align: center; width: 85%; max-width: 500px; z-index: 10; border: 1px solid var(--gris-oscuro); position: relative; transition: all 0.4s ease; }
-        
-        h1 { color: white; font-size: 2rem; margin: 0; letter-spacing: 2px; text-transform: uppercase; }
-        #status-msg { color: #666; font-weight: 300; margin: 20px 0 35px; font-size: 1rem; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recuerdo Especial 💘</title>
+<style>
+:root { --rosa: #ff4da6; --fondo: #0f0f14; --rojo: #ff0033; }
+body {
+    margin:0; height:100vh; display:flex; justify-content:center; align-items:center;
+    background: radial-gradient(circle at top, #1a1a2e, #000);
+    font-family: 'Segoe UI', sans-serif; overflow:hidden; transition:0.5s;
+}.card { background:#111; padding:50px; border-radius:30px; box-shadow:0 0 40px rgba(255,0,100,0.2); text-align:center; max-width:500px; width:85%; transition:0.6s; }
 
-        .btn-container { display: flex; justify-content: center; align-items: center; gap: 30px; min-height: 120px; position: relative; }
-        
-        button { padding: 18px 45px; font-size: 1.1rem; border: 1px solid #444; border-radius: 5px; cursor: pointer; font-weight: bold; transition: all 0.3s; }
-        
-        #yesBtn { background: white; color: black; z-index: 1000; }
-        #noBtn { background: transparent; color: #444; position: relative; z-index: 5; }
+h1 { color:#fff; letter-spacing:2px; }
 
-        #finalMessage { display: none; text-align: left; animation: fadeIn 1s ease forwards; }
-        .letter { font-size: 1.05rem; line-height: 1.8; color: #bbb; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+p { color:#aaa; }
 
-        .emoji { position: fixed; pointer-events: none; z-index: 2000; animation: caer 4s linear forwards; }
-        @keyframes caer { to { transform: translateY(110vh) rotate(360deg); opacity: 0; } }
-    </style>
+#loveMsg { font-size:1.1rem; line-height:1.6; }
+
+.hidden { display:none; }
+
+.glitch { color: var(--rojo); text-shadow: 0 0 10px red, 0 0 30px crimson; animation: glitch 0.2s infinite; }
+
+@keyframes glitch { 0% { transform: translate(0); } 25% { transform: translate(2px,-2px); } 50% { transform: translate(-2px,2px); } 75% { transform: translate(2px,2px); } 100% { transform: translate(0); } }
+
+.emoji { position: fixed; pointer-events:none; animation: caer 3s linear forwards; } @keyframes caer { to { transform: translateY(110vh); opacity:0; } } </style>
+
 </head>
-<body>
+<body><div class="card" id="card">
+    <h1>Para ti 💘</h1>
+    <p id="loveMsg">
+        A pesar de todo, hay cosas que nunca se olvidan.
+        <br><br>
+        Momentos que parecían reales, risas que creí sinceras,
+        y promesas que sonaban bonitas en su momento.
+        <br><br>
+        Supongo que algunas historias solo existen para enseñarte algo.
+    </p>
+</div><script>
+const card = document.getElementById('card');
+const msg = document.getElementById('loveMsg');
 
-    <audio id="musica" loop><source src="stronger.mp3" type="audio/mpeg"></audio>
+setTimeout(() => {
+    // TRANSICIÓN BRUSCA 🔥
+    document.body.style.background = "black";
+    card.style.boxShadow = "0 0 60px red";
 
-    <div class="card" id="mainCard">
-        <div id="quiz">
-            <h1>Fin de la transmisión</h1>
-            <p id="status-msg">¿Valió la pena la última mentira?</p>
-            <div class="btn-container" id="btnGroup">
-                <button id="yesBtn">No</button>
-                <button id="noBtn">Sí</button>
-            </div>
-        </div>
+    card.innerHTML = `
+        <h1 class="glitch">JAJA... NO 💀</h1>
+        <p style="color:#888; line-height:1.6;">
+        No era amor… era costumbre.
+        <br><br>
+        Gracias por irte 👋
+        <br>
+        Me hiciste un favor.
+        </p>
+    `;
 
-        <div id="finalMessage">
-            <h2 style="color: white; text-align: center; margin-top: 0; font-size: 1.3rem;">CONEXIÓN TERMINADA</h2>
-            <div class="letter">
-                <p>Se acabó el tiempo de las dudas. La venda cayó y lo que vi no fue lo que amaba, sino una desconocida que aprendió a mentir por conveniencia.</p>
-                <p>Me pediste ir lento mientras ya corrías en otra dirección. Me negaste la verdad para no perder el privilegio de mi atención. Pero hoy, 3 de marzo, las migajas se terminaron.</p>
-                <p>No hay odio, porque el odio requiere sentir algo. Solo hay un silencio que por fin es dueño de sí mismo. Gracias por enseñarme que mi lealtad es demasiado cara para alguien que se vende por tan poco.</p>
-                <p style="text-align: right; font-weight: bold; font-size: 0.9rem; color: #888; margin-top: 20px;">— Desconectado.</p>
-            </div>
-        </div>
-    </div>
+    // lluvia de emojis 💥
+    setInterval(()=>spawn('💔'),200);
+    setInterval(()=>spawn('🔥'),300);
+    setInterval(()=>spawn('✖️'),500);
 
-<script>
-    const noBtn = document.getElementById('noBtn');
-    const yesBtn = document.getElementById('yesBtn');
-    const musica = document.getElementById('musica');
-    const statusMsg = document.getElementById('status-msg');
-    
-    let scaleYes = 1;
-    let intentos = 0;
-    const frases = [
-        "La verdad ya salió a la luz.", 
-        "El tiempo de los juegos terminó.", 
-        "No busques respuestas donde no las hay.", 
-        "El acceso ha sido denegado.", 
-        "Ya no queda nada por salvar."
-    ]; 
+}, 4000);
 
-    function moverNo() {
-        musica.play().catch(() => {});
-        intentos++;
-        noBtn.style.position = 'fixed';
-        const margin = 80;
-        let newX, newY;
-        const screenW = window.innerWidth;
-        const screenH = window.innerHeight;
-
-        const lado = Math.floor(Math.random() * 4);
-        if(lado === 0) { newX = Math.random() * screenW; newY = margin; }
-        else if(lado === 1) { newX = Math.random() * screenW; newY = screenH - margin; }
-        else if(lado === 2) { newX = margin; newY = Math.random() * screenH; }
-        else { newX = screenW - margin; newY = Math.random() * screenH; }
-
-        noBtn.style.left = `${Math.max(20, Math.min(newX, screenW - 120))}px`;
-        noBtn.style.top = `${Math.max(20, Math.min(newY, screenH - 60))}px`;
-
-        scaleYes += 0.15;
-        yesBtn.style.transform = `scale(${scaleYes})`;
-        statusMsg.innerText = frases[Math.min(intentos - 1, frases.length - 1)];
-
-        if(scaleYes > 3) soltarEmoji('🚫');
-    }
-
-    noBtn.addEventListener('mouseover', moverNo);
-    noBtn.onclick = moverNo;
-
-    yesBtn.onclick = () => {
-        musica.play().catch(() => {});
-        document.getElementById('quiz').style.display = 'none';
-        document.getElementById('finalMessage').style.display = 'block';
-        document.getElementById('mainCard').style.transform = "scale(1)";
-        document.body.style.backgroundColor = "#050505";
-        
-        setInterval(() => soltarEmoji('🧊'), 300);
-        setInterval(() => soltarEmoji('✖️'), 600);
-    };
-
-    function soltarEmoji(tipo) {
-        const e = document.createElement('div');
-        e.className = 'emoji';
-        e.innerHTML = tipo;
-        e.style.left = Math.random() * 100 + 'vw';
-        e.style.top = '-10vh';
-        e.style.fontSize = (Math.random() * 20 + 15) + 'px';
-        document.body.appendChild(e);
-        setTimeout(() => e.remove(), 4000);
-    }
-</script>
-</body>
+function spawn(e){
+    const el = document.createElement('div');
+    el.className='emoji';
+    el.innerHTML=e;
+    el.style.left=Math.random()*100+'vw';
+    el.style.top='-10vh';
+    el.style.fontSize=(Math.random()*25+15)+'px';
+    document.body.appendChild(el);
+    setTimeout(()=>el.remove(),3000);
+}
+</script></body>
 </html>
